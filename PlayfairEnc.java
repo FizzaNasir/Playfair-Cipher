@@ -1,5 +1,5 @@
 import java.util.*;
-class Playfair{
+class PlayfairEnc {
     static ArrayList<Character> Cipher = new ArrayList<Character>();
 public static ArrayList<Character> DataEncryption(int er1, int ec1, int er2, int ec2,  char [][] Matrix ){
 
@@ -62,7 +62,6 @@ public static void SameRowElementsEnc(int er1, int ec1, int er2, int ec2, ArrayL
     int EC1=0, EC2=0, ER1=0, ER2=0;
     
     int j=0, i=0, l=1;
-//    String msg="MEATMEAFTERTHECLAS";
         String msg="FAIZAL";
     char [][] Matrix= {{'M', 'O', 'N', 'A', 'R'},
                        {'C', 'H', 'Y', 'D', 'E'},
@@ -99,7 +98,7 @@ public static void SameRowElementsEnc(int er1, int ec1, int er2, int ec2, ArrayL
                     ER1=r; EC1=c;
                     findE1=true;
                 }
-                else if(Matrix[r][c]==msg.charAt(l)){
+                else if(Matrix[r][c]==msg.charAt(i+1)){
                     ER2=r; EC2=c;
                     findE2=true;
                 }
@@ -111,12 +110,11 @@ public static void SameRowElementsEnc(int er1, int ec1, int er2, int ec2, ArrayL
            findE1=false;
            findE2=false;
            i+=2;
-           l=i+1;
            j++;
     }
         System.out.println("The encrypted text is: " );
         for(int k=0; k<Cipher.size();k++){
-            System.out.println( Cipher.get(k));
+            System.out.print( Cipher.get(k));
         }
     }
 
