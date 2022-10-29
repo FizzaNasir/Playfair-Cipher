@@ -1,8 +1,8 @@
 import java.util.*;
 class Playfair{
-
+    static ArrayList<Character> Cipher = new ArrayList<Character>();
 public static ArrayList<Character> DataEncryption(int er1, int ec1, int er2, int ec2,  char [][] Matrix ){
-    ArrayList<Character> Cipher = new ArrayList<Character>();
+
     if(ec1==ec2)//elements are in same column
     {
         SameColumnElementsEnc(er1, ec1, er2, ec2, Cipher, Matrix);
@@ -24,7 +24,8 @@ public static void SameColumnElementsEnc(int er1, int ec1, int er2, int ec2, Arr
      cipher.add(Matrix[er2+1][ec2]);
     }
     else if(er2==4)// element2 is the last element of column
-    {cipher.add(Matrix[er1+1][ec1]);
+    {
+     cipher.add(Matrix[er1+1][ec1]);
      cipher.add(Matrix[0][ec2]);
     }
     else{
@@ -60,16 +61,16 @@ public static void SameRowElementsEnc(int er1, int ec1, int er2, int ec2, ArrayL
     Boolean findE2=false;
     int EC1=0, EC2=0, ER1=0, ER2=0;
     
-    int j=0, i=0; 
-    String msg="MEATMEAFTERTHECLAS";
-
+    int j=0, i=0, l=1;
+//    String msg="MEATMEAFTERTHECLAS";
+        String msg="FAIZAL";
     char [][] Matrix= {{'M', 'O', 'N', 'A', 'R'},
                        {'C', 'H', 'Y', 'D', 'E'},
                        {'F', 'G', 'I', 'K', 'L'},
                        {'P', 'Q', 'R', 'S', 'T'},
-                       {'U', 'V', 'W', 'X', 'Z'}}; 
+                       {'U', 'V', 'W', 'X', 'Z'}};
 
-    while(j<msg.length()/2){
+//        while(j<msg.length()/2)
 //        for(int r=0; r<5; r++){
 //            for(int c=0; c<5; c++){
 //                if(Matrix[r][c]==msg.charAt(i)){
@@ -87,28 +88,35 @@ public static void SameRowElementsEnc(int er1, int ec1, int er2, int ec2, ArrayL
 //            } //end of inner for loop
 //        } //end of outer for loop
 //        j++;
-        while(findE1==false && findE2==false){
-            for(int r=0; r<5; r++){
+//MEAT
+   while(j<msg.length()/2){
+        while(!findE1 && !findE2)
+        {
+            for(int r=0; r<5; r++)
+            {
               for(int c=0; c<5; c++){
                 if(Matrix[r][c]==msg.charAt(i)){
                     ER1=r; EC1=c;
-                    findE1=true; }
-
-                else if(Matrix[r][c]==msg.charAt(i+1)){
+                    findE1=true;
+                }
+                else if(Matrix[r][c]==msg.charAt(l)){
                     ER2=r; EC2=c;
                     findE2=true;
                 }
-              }}}
+              }
+            }
+        }
               Cipher = DataEncryption(ER1, EC1, ER2, EC2, Matrix);
 
            findE1=false;
            findE2=false;
-           i++;
+           i+=2;
+           l=i+1;
            j++;
     }
         System.out.println("The encrypted text is: " );
         for(int k=0; k<Cipher.size();k++){
-            Cipher.get(k);
+            System.out.println( Cipher.get(k));
         }
     }
 
