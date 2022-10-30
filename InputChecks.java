@@ -64,19 +64,23 @@ public class InputChecks {
     public static String InputMsg(){
         String msg="";
         String refmsg="";
-        while(true) {
-            System.out.print("Enter your message for enc/dec: ");
-            Scanner sc = new Scanner(System.in);
-            msg = sc.nextLine().replaceAll("\\s","").toUpperCase();
-            if(msg.length()%2!=0){
-                msg+='Z';
+        // while(true) {
+        System.out.print("Enter your message for enc/dec: ");
+        Scanner sc = new Scanner(System.in);
+        msg = sc.nextLine().replaceAll("\\s","").toUpperCase();
+        if(msg.length()%2!=0){
+            msg+='Z';
+        }
+        msg = msg.replace('J', 'I');
+        for(int i=0; i<msg.length();i+=2){
+            if(msg.charAt(i)== msg.charAt(i+1)){
+                refmsg=refmsg+'X'+msg.charAt(i+1);
+
             }
-            for(int i=0; i<msg.length()-1; i++){
-                if(msg.charAt(i)== msg.charAt(i+1)){
-                    refmsg=msg.substring(0, i) + 'X' + msg.substring(i+1);
-                }
+            else{
+                refmsg=refmsg+msg.charAt(i)+msg.charAt(i+1);
+
             }
-            break;
         }
         return refmsg;
     }
